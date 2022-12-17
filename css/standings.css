@@ -1,0 +1,121 @@
+
+#group_list {
+    margin: 1vh 8vh;
+    font-size: 2vh;
+}
+
+.glist_item {
+    margin: 0;
+    padding: 0.3vh 1.5vh;
+    color: var(--tm_fc_header2);
+    cursor: pointer;
+}
+
+.glist_item:hover {
+    color: var(--tm_fc_hover);
+}
+
+.glist_item.active {
+    color: var(--tm_fc_header);
+}
+
+.glist_item.active::after {
+    content: "";
+    width: calc(100% + 1vh);
+    height: 0.2vh;
+    background-color: var(--tm_accent);
+    position: relative;
+    display: block;
+    margin-top: 0.5vh;
+    margin-left: -0.5vh;
+}
+
+
+.content_frame {
+    width: calc(100vw - 35vh);
+    height:70vh;
+    margin: 2vh auto;
+    padding: 3vh 5vh;
+}
+
+#played {
+    position: relative;
+}
+
+.std_title {
+    color: var(--tm_fc_header);
+    font-size: 3vh;
+    margin: 0;
+}
+
+#std_game {
+    color: var(--tm_fc_accent);
+}
+
+#standings {
+    position: relative;
+    margin-top: 3vh;
+    height: calc(12 * 5vh);
+}
+
+.std_item {
+    font-size: 2.5vh;
+    line-height: 4vh;
+    position: absolute;
+    top: calc(5vh * var(--rank));
+    left: 0;
+    transition: top 0.2s ease-out;
+}
+
+.std_num {
+    float: left;
+    text-align: right;
+    color: var(--tm_fc_content);
+    width: 5vh;
+}
+
+.std_col {
+    float: left;
+    margin-left: 2vh;
+    width: 1vh;
+    height: 4vh;
+}
+
+.std_name {
+    float: left;
+    width: 30vh;
+    height: 4vh;
+    background-color: var(--tm_bg_standing);
+    color: var(--tm_fc_content_dark);
+    padding-left: 2vh;
+}
+
+.std_pts {
+    float: left;
+    margin-left: -2vh;
+    width: 10vh;
+    height: 4vh;
+    background-color: var(--tm_accent);
+    color: var(--tm_fc_content);
+    padding-left: 2vh;
+    transform: skewX(-40deg);
+}
+
+.std_pts > div {
+    transform: skewX(40deg);
+}
+
+#scoregraph {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#scoregraph_svg {
+    width: 100vh;
+    height: 70vh;
+}
+
+.svg_tx {
+    transform: translate(calc(-7.5px + 15px * var(--x)), 1px)
+}

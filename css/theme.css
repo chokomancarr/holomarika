@@ -1,0 +1,23 @@
+body {
+    --tm_bg: #222;
+    --tm_bg2: #333;
+    --tm_accent: rgb(212, 24, 24);
+    --tm_accent2: rgb(230, 174, 21);
+    --tm_bg_table: #555;
+    --tm_bg_standing: #ccc;
+
+    --tm_font: 'Arial Black', sans-serif;
+    --tm_font_light: 'Arial Bold', sans-serif;
+
+    --tm_fc_title: #fff;
+    --tm_fc_header: #ddd;
+    --tm_fc_header2: #ccc;
+    --tm_fc_content: #ccc;
+    --tm_fc_content_dark: #333;
+    --tm_fc_content_fade: #ccc8;
+    --tm_fc_hover: #fff;
+    --tm_fc_accent: rgb(235, 93, 93);
+
+    --tm_page_active_hl: #ccc;
+    --tm_page_active_font: #333;
+}

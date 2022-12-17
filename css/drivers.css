@@ -1,0 +1,168 @@
+
+.content_frame {
+    width: calc(50vw);
+    height: 75vh;
+    margin-top: 2vh;
+    margin-left: 5vh;
+    padding: 3vh 5vh;
+    overflow-y: auto;
+}
+
+#player_list {
+    position: relative;
+}
+
+.pll_item, .pll_item_header {
+    font-size: 2.5vh;
+    line-height: 4vh;
+    position: absolute;
+    top: calc(4.2vh * var(--sort) + 4.2vh);
+    left: 0;
+    transition: top 0.2s ease-out;
+    width: 100%;
+    cursor: pointer;
+}
+
+.pll_cell, .pll_cell_hd {
+    float: left;
+    color: var(--tm_fc_content);
+    background-color: var(--tm_bg_table);
+    width: calc(100% * var(--w) - 1vh);
+    height: 4vh;
+    padding-left: 1vh;
+}
+
+.pll_cell {
+    pointer-events: none;
+}
+
+:hover > .pll_cell, .pll_cell_hd:hover {
+    color: var(--tm_fc_hover);
+}
+
+.active > .pll_cell {
+    border-bottom: var(--tm_accent) 0.4vh solid;
+}
+
+.pll_item_header {
+    top: 0;
+}
+
+.pll_cell_hd {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.sort::after {
+    content: "\25BC";
+    margin-left: 1vh;
+}
+
+.sort.invert::after {
+    content: "\25B2";
+}
+
+#player_info {
+    position: absolute;
+    width: 35vw;
+    height: 75vh;
+    top: 2vh;
+    right: 5vh;
+    padding: 3vh 5vh;
+    overflow-y: hidden;
+}
+
+.pll_name {
+    margin-left: 2vh;
+    color: var(--tm_fc_header2);
+    font-size: 2.5vh;
+}
+
+.pll_name.main {
+    font-size: 4vh;
+}
+
+#pll_team {
+    margin-left: 4vh;
+    margin-top: 1vh;
+    color: var(--tm_fc_content_fade);
+    font-size: 2vh;
+}
+
+#pll_stats {
+    border: 0.5vh solid var(--tm_accent);
+    border-bottom: none;
+    border-right: none;
+    border-top-left-radius: 2vh;
+    margin-top: 2vh;
+    color: var(--tm_fc_content);
+    font-size: 2vh;
+}
+
+.plls_l {
+    padding-left: 2vh;
+    height: 2.5vh;
+    width: 15vh;
+}
+
+.plls_r {
+    width: 15vh;
+}
+
+.plls_r::before {
+    content: ": ";
+}
+
+#pll_past {
+    margin-left: 2vh;
+    margin-top: 2vh;
+    color: var(--tm_fc_header2);
+    font-size: 2.5vh;
+}
+
+#pllp_list {
+    position: relative;
+    width: 35vw;
+    overflow-y: auto;
+}
+
+#pllp_list_entries {
+    position: relative;
+    overflow-y: auto;
+    width: 100%;
+    height: 30vh;
+    max-height: 30vh;
+    margin-top: 4.2vh;
+}
+
+.pllp_item, .pllp_header {
+    font-size: 2vh;
+    line-height: 4vh;
+    position: absolute;
+    top: calc(4.2vh * var(--sort));
+    left: 0;
+    transition: top 0.2s ease-out;
+    width: 100%;
+}
+
+.pllp_cell, .pllp_cell_hd {
+    float: left;
+    color: var(--tm_fc_content);
+    background-color: var(--tm_bg_table);
+    width: calc(100% * var(--w) - 1vh);
+    height: 4vh;
+    padding-left: 1vh;
+}
+
+.active > .pllp_cell {
+    border-bottom: var(--tm_accent) 0.4vh solid;
+}
+
+.pllp_header {
+    top: 0;
+}
+
+.pllp_cell_hd {
+    background-color: transparent;
+    cursor: pointer;
+}
