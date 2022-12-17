@@ -1,0 +1,32 @@
+[
+	{
+        "group": "Prelim Block A",
+        "players_id": [1010, 2020, 3030, 4040, 5050],
+        "players_nick": ["sui", "miko", "gura", "towa", "kobo"],
+        "results": [
+            {
+                "map": "Big Blue",
+                "ranks": [ "sui", "miko", "towa", "gura", "kobo" ]
+            },
+            {
+                "map": "",
+                "ranks": [  ]
+            }
+        ]
+    },
+	{
+        "group": "Prelim Block B",
+        "players_id": [1020, 2030, 3040, 4050, 5060],
+        "players_nick": ["haato", "marine", "kaela", "nene", "ame"],
+        "results": [
+            {
+                "map": "",
+                "ranks": [  ]
+            },
+            {
+                "map": "",
+                "ranks": [  ]
+            }
+        ]
+    }
+]
