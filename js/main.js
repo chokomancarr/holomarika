@@ -11,16 +11,24 @@ import "./pages/standings.js";
 import "./pages/drivers.js";
 import "./pages/live.js";
 
+let last_page = null;
+
 /**
  * @param {string} page
  */
 async function load_page(page) {
+
     let container = document.getElementById("content_container");
     container.innerHTML = "";
     let loading = document.getElementById("loading");
     loading.classList.remove("hide");
-
     document.getElementById("page_css").remove();
+    
+    if (last_page !== null) {
+        pages.hooks[last_page](false);
+    }
+    last_page = page;
+
     await new Promise((resolve) => {
         var cssNode = document.createElement('link');
         cssNode.id = "page_css";
@@ -30,9 +38,9 @@ async function load_page(page) {
         cssNode.onload = resolve
         document.head.appendChild(cssNode);
     });
-    container.innerHTML =
-        await (await fetch(`pages/${page}.html`)).text();
-    pages.hooks[page]();
+    container.innerHTML = await (await fetch(`pages/${page}.html`)).text();
+    pages.hooks[page](true);
+
     loading.classList.add("hide");
 }
 

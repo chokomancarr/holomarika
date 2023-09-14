@@ -16,6 +16,21 @@ const STREAM_REQ_TY = Object.freeze({
 let stream_req_type = STREAM_REQ_TY.STATIC;
 let hdx_api_key = util.url_param_get("holodex_key", util.cookie_get("holodex_key", null));
 
+let active_livestream = null;
+let livestream_div = document.getElementById("live_streams");
+
+function add_livestream(url) {
+    util.set_inner("live_streams", `
+<iframe id="live_stream_main" src="https://www.youtube.com/embed/${url}?autoplay=0&showinfo=0"
+    scrolling="no" frameborder="0" marginheight="0px" marginwidth="0px" height="100vh" width="56.25vh" allowfullscreen>
+</iframe>`);
+    active_livestream = url;
+}
+function kill_livestream() {
+    document.getElementById("live_streams").innerHTML = "";
+    active_livestream = null;
+}
+
 async function hdx_fetch(request, headers, params = {}) {
     return [];
     let res = await fetch("https://holodex.net/api/v2/" + request + "?" + new URLSearchParams(params), {
@@ -96,7 +111,7 @@ function load_standings_html() {
     ui.reg_click("floating_window_close", _ => {
         ui.hide("floating_window");
     });
-    ui.reg_click("stream_req_type", _ => {
+    ui.reg_click("stream_req_text", _ => {
         ui.show("floating_window");
     });
 
@@ -105,6 +120,45 @@ function load_standings_html() {
     }
 }
 
-function onload_live() {
-    load_standings_html();
+function onload_live(load) {
+    if (load) {
+        livestream_div.classList.remove("floating");
+        ui.show("live_streams");
+        
+        load_standings_html();
+
+        {
+            let main_url = "KDyJmdtclAk";
+            let div = document.getElementById("stream_list_item_main");
+            div.dataset.youtube = main_url;
+            if (active_livestream === main_url) {
+                div.classList.add("live");
+            }
+        }
+
+        for (let it of document.getElementsByClassName("stream_list_item")) {
+            it.addEventListener("click", e => {
+                let url = e.target.dataset.youtube;
+                if (active_livestream === url) {
+                    kill_livestream();
+                    e.target.classList.remove("live");
+                }
+                else {
+                    if (active_livestream !== null) {
+                        document.getElementById("stream_list_item_" + active_livestream).classList.remove("live");
+                    }
+                    add_livestream(url);
+                    e.target.classList.add("live");
+                }
+            });
+        }
+    }
+    else {
+        if (active_livestream === null) {
+            ui.hide("live_streams");
+        }
+        else {
+            livestream_div.classList.add("floating");
+        }
+    }
 }

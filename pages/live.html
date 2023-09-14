@@ -1,14 +1,13 @@
 <div id="main_content">
     <div id="stream_list_title">Camera Feed</div>
     <div id="stream_list_frame" class="content_frame anim_appear" style="--anim_l:0.5s; --anim_d:0s">
-        <p id="stream_none">No Active Feed</p>
+        <div id="stream_none">No Active Feed</div>
         <div id="stream_list"></div>
-        <div id="stream_req_type"></div>
     </div>
-
-    <div id="live_streams">
-        <iframe id="live_stream_main" src="https://www.youtube.com/embed/KDyJmdtclAk?autoplay=0&showinfo=0" scrolling="no" frameborder="0" marginheight="0px" marginwidth="0px" height="100vh" width="56.25vh" allowfullscreen></iframe>
+    <div id="stream_main_frame" class="content_frame anim_appear" style="--anim_l:0.5s; --anim_d:0s">
+        <div id="stream_list_item_main" class="stream_list_item">Commentary Desk</div>
     </div>
+    <div id="stream_req_text">Serving&nbsp;<span id="stream_req_type"></span>&nbsp;(click to change)</div>
 
     <div id="live_game_title" class="content_frame anim_appear" style="--anim_l:0.5s; --anim_d:0s">
         Prelim Group A - Game 2

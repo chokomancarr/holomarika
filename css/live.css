@@ -9,8 +9,21 @@
 #stream_list_frame {
     position: absolute;
     width: 30vh;
-    height: 70vh;
+    height: 60vh;
     top: 10vh;
+    left: 5vh;
+    color: var(--tm_fc_content);
+    font-size: 2vh;
+    border-radius: 2vh;
+    text-align: center;
+    line-height: 7vh;
+}
+
+#stream_main_frame {
+    position: absolute;
+    width: 30vh;
+    height: 7vh;
+    top: 73vh;
     left: 5vh;
     color: var(--tm_fc_content);
     font-size: 2vh;
@@ -24,12 +37,36 @@
     font-size: 2vh;
 }
 
+.stream_list_item {
+    cursor: pointer;
+}
+.stream_list_item:hover {
+    color: var(--tm_fc_header);
+}
+.stream_list_item.live {
+    text-decoration: underline;
+    text-decoration-color: var(--tm_accent);
+    text-decoration-thickness: 0.3vh;
+}
+
+#stream_req_text {
+    cursor: pointer;
+    position: absolute;
+    width: 30vh;
+    top: 82vh;
+    left: 5vh;
+    font-size: 1.5vh;
+    text-align: center;
+    color: var(--tm_fc_content_fade);
+}
+
+
 #live_stream_main {
     position: absolute;
     width: 100vh;
     height: 56.25vh;
-    left: calc(50vw - 60vh);
-    top: 10vh;
+    right: calc(50vw - 40vh);
+    bottom: 20vh;
     border-radius: 2vh;
 }
 

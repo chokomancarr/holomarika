@@ -109,7 +109,8 @@ function drv_sort_by(i) {
         });
 }
 
-function onload_drivers() {
+function onload_drivers(load) {
+    if (!load) return;
     gen_list_html();
 
     drv_header = ui.reg_multipick_cls("pll_cell_hd", i => {

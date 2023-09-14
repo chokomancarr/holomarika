@@ -112,7 +112,8 @@ function select_group(i) {
     }
 }
 
-function onload_standings() {
+function onload_standings(load) {
+    if (!load) return;
     if (tourney_id < 0) {
         tourney_id = data.races.length - 1;
     }
