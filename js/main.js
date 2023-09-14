@@ -17,6 +17,9 @@ import "./pages/live.js";
 async function load_page(page) {
     let container = document.getElementById("content_container");
     container.innerHTML = "";
+    let loading = document.getElementById("loading");
+    loading.classList.remove("hide");
+
     document.getElementById("page_css").remove();
     await new Promise((resolve) => {
         var cssNode = document.createElement('link');
@@ -30,6 +33,7 @@ async function load_page(page) {
     container.innerHTML =
         await (await fetch(`pages/${page}.html`)).text();
     pages.hooks[page]();
+    loading.classList.add("hide");
 }
 
 async function load_bg_movie() {

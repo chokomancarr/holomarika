@@ -94,6 +94,53 @@ body {
 
 /* ---- generic ---- */
 
+    #loading {
+        z-index: -10;
+        pointer-events: none;
+        width: 20vh;
+        margin: 25vh auto;
+        filter: opacity(100%);
+    }
+    #loading.hide {
+        filter: opacity(0);
+        transition: filter 0.1s;
+    }
+    #load_logo {
+        fill: none;
+        stroke: var(--tm_accent);
+        stroke-miterlimit: 100;
+        stroke-width: 30
+    }
+    @keyframes loading1 {
+        0% {
+            stroke-dasharray: 20% 1000%;
+        }
+        50% {
+            stroke-dasharray: 40% 1000%;
+        }
+        100% {
+            stroke-dasharray: 20% 1000%;
+        }
+    }
+    @keyframes loading2 {
+        0% {
+            transform: rotate(-90deg);
+        }
+        100% {
+            transform: rotate(270deg);
+        }
+    }
+    #load_circle {
+        fill: none;
+        stroke: var(--tm_fc_header);
+        stroke-miterlimit: 100;
+        stroke-width: 10;
+        transform-origin: center;
+        animation: loading1 2s linear infinite, loading2 2s cubic-bezier(0.6, 0.1, 0.4, 0.9) infinite;
+    }
+
+/* ---- generic ---- */
+
     .horizontal_list {
         list-style: none;
         overflow: auto;
