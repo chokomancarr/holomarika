@@ -1,3 +1,0 @@
-function onload_overview() {
-    
-}

@@ -69,7 +69,7 @@
     top: 2vh;
     right: 5vh;
     padding: 3vh 5vh;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 .pll_name {
@@ -113,6 +113,22 @@
     content: ": ";
 }
 
+#pll_portrait {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: -10%;
+    z-index: -10;
+    -webkit-mask-image: -webkit-gradient(linear, left top, 
+        left bottom, from(rgba(1,1,1,1)), to(rgba(1,1,1,0)));
+    filter: opacity(0);
+}
+#pll_portrait.loaded {
+    right: 0;
+    filter: opacity(100%);
+    transition: right 0.1s linear, filter 0.1s linear;
+}
+
 #pll_past {
     margin-left: 2vh;
     margin-top: 2vh;
@@ -124,6 +140,7 @@
     position: relative;
     width: 35vw;
     overflow-y: auto;
+    background-color: var(--tm_bg);
 }
 
 #pllp_list_entries {

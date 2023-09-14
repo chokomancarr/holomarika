@@ -1,16 +1,44 @@
-function do_fetch_str(path, onfetch, onfail = undefined) {
-    fetch(path)
-        .then(resp => resp.text())
-        .then(onfetch)
-        .catch(err => {
-            console.error(err);
-            if (onfail !== undefined) {
-                onfail(err);
-            }
+//@ts-check
+'use strict';
+
+let cookies = (function() {
+    let res = {};
+    document.cookie.split(";")
+        .forEach(s => {
+            let [k, v] = s.trim().split("=");
+            res[k] = v;
         });
+    return res;
+})();
+
+export function cookie_get(nm, def) {
+    return cookies[nm] ?? def;
+}
+export function cookie_set(nm, vl) {
+    cookies[nm] = vl + "";
+    document.cookie = nm + "=" + vl + ";max-age=31536000";
 }
 
-function set_inner(id, content, add = false) {
+let url_params = (function() {
+    let res = {};
+    (document.URL.split("?")[1] ?? "").split("&")
+        .forEach(s => {
+            let [k, v] = s.split("=");
+            res[k] = v;
+        });
+    return res;
+})();
+
+export function url_param_get(nm, def) {
+    return url_params[nm] ?? def;
+}
+
+
+/**
+ * @param {string} id
+ * @param {string} content
+ */
+export function set_inner(id, content, add = false) {
     let el = document.getElementById(id);
     if (add) {
         el.innerHTML += content;

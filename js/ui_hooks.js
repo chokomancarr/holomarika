@@ -1,13 +1,21 @@
-function ui_reg_multipick(elems, onpick) {
+export function reg_click_e(elem, fn) {
+    elem.addEventListener("click", fn);
+}
+
+export function reg_click(id, fn) {
+    reg_click_e(document.getElementById(id), fn);
+}
+
+export function reg_multipick(elems, onpick) {
     return {
         last_active: 0,
         elems: elems,
         callback: onpick,
         _init() {
             this.elems.forEach((h, i) => {
-                h.addEventListener("click", e => {
+                reg_click_e(h, _ => {
                     this.pick(i);
-                })
+                });
             });
             return this;
         },
@@ -19,9 +27,16 @@ function ui_reg_multipick(elems, onpick) {
         }
     }._init();
 }
-function ui_reg_multipick_arr(arr, onpick) {
-    return ui_reg_multipick(arr.map(a => document.getElementById(a)), onpick);
+export function reg_multipick_arr(arr, onpick) {
+    return reg_multipick(arr.map(a => document.getElementById(a)), onpick);
 }
-function ui_reg_multipick_cls(cls, onpick) {
-    return ui_reg_multipick(Array.from(document.getElementsByClassName(cls)), onpick);
+export function reg_multipick_cls(cls, onpick) {
+    return reg_multipick(Array.from(document.getElementsByClassName(cls)), onpick);
+}
+
+export function show(id, b = true) {
+    document.getElementById(id).classList.toggle("hidden", !b);
+}
+export function hide(id) {
+    document.getElementById(id).classList.add("hidden");
 }

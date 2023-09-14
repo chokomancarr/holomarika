@@ -5,6 +5,23 @@ body {
     font-family: var(--tm_font);
 }
 
+#background_img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: fill;
+    filter: opacity(0%);
+    transition: filter 0.5s linear;
+    pointer-events: none;
+    z-index: -100;
+}
+
+#background_img.show {
+    filter: opacity(50%);
+}
+
 /* ---- header ---- */
 
     #top_header {
@@ -61,8 +78,18 @@ body {
     }
 
     .content_frame {
-        background-color: var(--tm_bg2);
+        background-color: var(--tm_bg2_tr);
         border-radius: 3vh;
+        backdrop-filter: blur(2vh);
+    }
+
+    #floating_window {
+        background-color: var(--tm_bg2);
+        padding: 5vh;
+        margin: auto;
+        max-width: fit-content;
+        max-height: fit-content;
+        color: var(--tm_fc_header);
     }
 
 /* ---- generic ---- */

@@ -24,6 +24,15 @@
     font-size: 2vh;
 }
 
+#live_stream_main {
+    position: absolute;
+    width: 100vh;
+    height: 56.25vh;
+    left: calc(50vw - 60vh);
+    top: 10vh;
+    border-radius: 2vh;
+}
+
 #live_game_title {
     position: absolute;
     width: 40vh;

@@ -1,0 +1,139 @@
+{
+    "Prelim Block A": [
+        {
+            "map_name": "DS Peach Gardens",
+            "placements": [
+                "okayu", "marine", "kronii", "matsuri", "towa", "chloe", "iroha", "anya", "ame", "nene"
+            ]
+        },
+        {
+            "map_name": "Sweet Sweet Canyon",
+            "placements": [
+                "marine", "chloe", "okayu", "iroha", "kronii", "towa", "matsuri", "anya", "nene", "ame"
+            ]
+        },
+        {
+            "map_name": "Dolphin Shoals",
+            "placements": [
+                "okayu", "towa", "iroha", "marine", "matsuri", "chloe", "kronii", "nene", "anya", "ame"
+            ]
+        },
+        {
+            "map_name": "Toad Harbor",
+            "placements": [
+                "marine", "okayu", "chloe", "towa", "kronii", "matsuri", "iroha", "nene", "anya", "ame"
+            ]
+        },
+        {
+            "map_name": "SNES Mario Circuit 3",
+            "placements": [
+                "matsuri", "iroha", "okayu", "chloe", "towa", "marine", "nene", "ame", "kronii", "anya"
+            ]
+        },
+        {
+            "map_name": "N64 Rainbow Road",
+            "placements": [
+                "okayu", "iroha", "matsuri", "kronii", "marine", "anya", "towa", "chloe", "nene", "ame"
+            ]
+        }
+    ],
+    "Prelim Block B": [
+        {
+            "map_name": "",
+            "placements": "ayame, miko, sui, luna, rbc, fbk, kobo, watame, gura, kaela, mel"
+        },{
+            "map_name": "",
+            "placements": "sui, fbk, wtm, miko, gura, mel, luna, ayame, rbc, kaela, kobo"
+        },{
+            "map_name": "",
+            "placements": "fbk, miko, sui, gura, mel, wtm, luna, ayame, kaela, rbc, kobo"
+        },{
+            "map_name": "",
+            "placements": "sui, miko, ayame, gura, fbk, kobo, wtm, luna, mel, kaela, rbc"
+        },{
+            "map_name": "",
+            "placements": "sui, ayame, rbc, fbk, wtm, luna, miko, gura, kobo, kaela, mel"
+        },{
+            "map_name": "",
+            "placements": "sui, wtm, mel, fbk, luna, gura, rbc, ayame, kaela, miko, kobo"
+        }
+    ],
+    "Prelim Block C": [
+        {
+            "map_name": "",
+            "placements": "lui, subaru, aki, koyo, mio, reine, ollie, peko, zeta, noel, sora, choco"
+        },
+        {
+            "map_name": "",
+            "placements": "mio, subaru, lui, aki, reine, ollie, noel, koyo, peko, sora, zeta, choco"
+        },
+        {
+            "map_name": "",
+            "placements": "koyo, sora, mio, peko, aki, subaru, ollie, reine, zeta, lui, noel, choco"
+        },
+        {
+            "map_name": "",
+            "placements": "reine, mio, sora, ollie, peko, koyo, noel, subaru, lui, aki, zeta, choco"
+        },
+        {
+            "map_name": "",
+            "placements": "subaru, lui, ollie, aki, mio, koyo, peko, reine, sora, noel, zeta, choco"
+        },
+        {
+            "map_name": "",
+            "placements": "subaru, lui, mio, koyo, noel, peko, reine, sora, aki, choco, zeta, ollie"
+        }
+    ],
+    "Zako Cup": [
+        {
+            "map_name": "",
+            "placements": "noel, mel, nene, rbc, kronii, sora, kaela, ame, zeta, anya, choco, kobo"
+        },
+        {
+            "map_name": "",
+            "placements": "noel, nene, kronii, kobo, ame, mel, kaela, choco, rbc, sora, anya, zeta"
+        },
+        {
+            "map_name": "",
+            "placements": "nene, rbc, noel, sora, mel, anya, kronii, kaela, zeta, ame, choco, kobo"
+        },
+        {
+            "map_name": "",
+            "placements": "kronii, nene, noel, mel, anya, zeta, rbc, kaela, ame, sora, choco, kobo"
+        },
+        {
+            "map_name": "",
+            "placements": "kronii, kaela, sora, mel, rbc, nene, ame, zeta, anya, noel, kobo, choco"
+        },
+        {
+            "map_name": "",
+            "placements": "kronii, nene, ame, kaela, rbc, mel, anya, noel, zeta, kobo, sora, choco"
+        }
+    ],
+    "Winners Cup": [
+        {
+            "map_name": "",
+            "placements": "sui, mio, marine, lui, okayu, iroha, miko, fbk, ayame, koyo, subaru, matsuri"
+        },
+        {
+            "map_name": "",
+            "placements": "okayu, sui, matsuri, mio, subaru, koyo, fbk, miko, ayame, marine, iroha, lui"
+        },
+        {
+            "map_name": "",
+            "placements": "mio, marine, sui, miko, matsuri, iroha, subaru, okayu, lui, ayame, koyo, fbk"
+        },
+        {
+            "map_name": "",
+            "placements": "marine, iroha, sui, miko, subaru, okayu, lui, koyo, ayame, fbk, mio, matsuri"
+        },
+        {
+            "map_name": "",
+            "placements": "mio, sui, fbk, lui, iroha, ayame, okayu, subaru, matsuri, marine, koyo, miko"
+        },
+        {
+            "map_name": "Baby Park",
+            "placements": "marine, okayu, iroha, koyori, subaru, lui, sui, mio, matsuri, fbk, ayame, miko"
+        }
+    ]
+}
