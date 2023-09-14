@@ -118,6 +118,10 @@ export function find_closest_player(nm, nothrow = false) {
 
     { //some common nicknames
         if (nm2 === "haachama") nm2 = "haato";
+        else if (nm2 === "laplus" || nm2 === "lap") nm2 = "la+";
+        else if (nm2 === "wamy") nm2 = "lamy";
+        else if (nm2 === "god") nm2 = "matsuri";
+        else if (nm2 === "foob") nm2 = "fubuki";
     }
 
     //look for exact match first
