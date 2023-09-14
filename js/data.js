@@ -59,6 +59,22 @@ export var players_raced = undefined;
  */
 export var races = undefined;
 
+const RESOURCE_BRANCH_NAME = "master";
+const _resource_domain = (function() {
+    if (document.URL.startsWith("localhost")) return "";
+    else {
+        let ps = document.URL.split("/").slice(2);
+        if (!ps[0].endsWith(".github.io")) return "";
+
+        let acc = ps[0].split(".")[0];
+        let repo = ps[1];
+        return `https://raw.githubusercontent.com/${acc}/${repo}/${RESOURCE_BRANCH_NAME}/`;
+    }
+})();
+async function fetch_resource(url, type) {
+    return await (await fetch(_resource_domain + url))[type]();
+}
+
 const placement_score_lookup = [
     [3, 1],
     [4, 2, 1],
@@ -119,7 +135,7 @@ export function find_closest_player(nm, nothrow = false) {
 }
 
 async function load_single_result(path, title, date) {
-    let json = await (await fetch("database/races/" + path)).json();
+    let json = await fetch_resource("database/races/" + path, "json");
     return Object.entries(json).map(([nm, vl]) => {
         /** @type {DataResultGroup} */
         let res = {
@@ -176,7 +192,7 @@ async function load_single_result(path, title, date) {
 }
 
 export async function load() {
-    players = window["Papa"].parse(await (await fetch("database/all_players.csv")).text(), { header: true, dynamicTyping: true }).data
+    players = window["Papa"].parse(await fetch_resource("database/all_players.csv", "text"), { header: true, dynamicTyping: true }).data
         .map((v, i) => ({
             player_id: i,
             game_char: "No Info",
@@ -193,7 +209,7 @@ export async function load() {
             ...v
         }));
 
-    (await (await fetch("database/player_links.json")).json()).forEach(d => {
+    (await fetch_resource("database/player_links.json", "json")).forEach(d => {
         let pid = find_closest_player(d.name.split(" ")[0].substring(0, 6), true); //for some reason, "sakuramiko" isnt spaced
         if (pid > -1) {
             players[pid].channel_url = d.youtube;
@@ -201,7 +217,7 @@ export async function load() {
         }
     });
 
-    races = await Promise.all(window["Papa"].parse(await (await fetch("database/races/_race_list.csv")).text(), { header: true, dynamicTyping: true }).data
+    races = await Promise.all(window["Papa"].parse(await fetch_resource("database/races/_race_list.csv", "text"), { header: true, dynamicTyping: true }).data
         .map(async lst => ({
             name: lst.name,
             date: new Date(lst.date),
