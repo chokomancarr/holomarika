@@ -8,7 +8,7 @@ import * as util from "../util.js"
 import * as ui from "../ui_hooks.js"
 import * as data from "../data.js"
 
-var tourney_id = 0;
+var tourney_id = -1;
 
 var standing_elems = [];
 var standing_elems_num = [];
@@ -113,11 +113,19 @@ function select_group(i) {
 }
 
 function onload_standings() {
-    util.set_inner("std_tourney_sel", data.races.map((r, i) => `<option value="${i}">${r.name}</option>`).join(""));
+    if (tourney_id < 0) {
+        tourney_id = data.races.length - 1;
+    }
+    util.set_inner("std_tourney_sel", data.races.map((r, i) => `<option ${i === tourney_id ? `selected="selected"` : ""} value="${i}">${r.name}</option>`).join(""));
+
+    document.getElementById("std_tourney_sel").addEventListener("change", e => {
+        tourney_id = +e.target.value;
+        gen_group_list_html();
+        gen_standings_html();
+        ui.reg_multipick_cls("glist_item", select_group).pick(0);
+    });
 
     gen_group_list_html();
-
     gen_standings_html();
-
     ui.reg_multipick_cls("glist_item", select_group).pick(0);
 }

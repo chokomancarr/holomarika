@@ -1,0 +1,159 @@
+{
+    "Prelim Block A": [
+        {
+            "map_name": "",
+            "placements": "skmt, knt, irys, okayu, ame, ayame, mel, lamy, mumei, flare, rbc"
+        },
+        {
+            "map_name": "",
+            "placements": "skmt, mel, rbc, okayu, lamy, mumei, ayame, knt, flare, irys, ame"
+        },
+        {
+            "map_name": "",
+            "placements": "irys, ayame, okayu, ame, skmt, knt, flare, rbc, mel, lamy, mumei"
+        },
+        {
+            "map_name": "",
+            "placements": "okayu, flare, knt, irys, skmt, ame, lamy, ayame, mumei, mel, rbc"
+        },
+        {
+            "map_name": "",
+            "placements": "knt, mel, skmt, okayu, mumei, ame, rbc, lamy, ayame, irys, flare"
+        },
+        {
+            "map_name": "",
+            "placements": "irys, ayame, okayu, knt, rbc, skmt, lamy, flare, ame, mumei, mel"
+        }
+    ],
+    "Prelim Block B": [
+        {
+            "map_name": "",
+            "placements": "sui, aqua, peko, gura, towa, fauna, ollie, aki, koyo, la+, choco"
+        },
+        {
+            "map_name": "",
+            "placements": "sui, gura, ollie, peko, aqua, towa, fauna, aki, koyo, la+, choco"
+        },
+        {
+            "map_name": "",
+            "placements": "sui, peko, towa, la+, fauna, ollie, gura, koyo, aqua, aki, choco"
+        },
+        {
+            "map_name": "",
+            "placements": "towa, sui, peko, gura, aqua, fauna, aki, ollie, choco, koyo, la+"
+        },
+        {
+            "map_name": "",
+            "placements": "sui, gura, towa, aqua, fauna, peko, aki, ollie, koyo, choco, la+"
+        },
+        {
+            "map_name": "",
+            "placements": "towa, sui, aqua, gura, peko, ollie, koyo, aki, la+, fauna, choco"
+        }
+    ],
+    "Prelim Block C": [
+        {
+            "map_name": "",
+            "placements": "polka, iroha, mio, wtm, matsuri, anya, sana, kronii, mori, miko, noel"
+        },
+        {
+            "map_name": "",
+            "placements": "miko, sana, anya, kronii, mio, polka, wtm, noel, matsuri, iroha, mori"
+        },
+        {
+            "map_name": "",
+            "placements": "wtm, miko, noel, sana, kronii, iroha, matsuri, mio, polka, mori, anya"
+        },
+        {
+            "map_name": "",
+            "placements": "wtm, miko, kronii, iroha, matsuri, noel, anya, mio, sana, mori, polka"
+        },
+        {
+            "map_name": "",
+            "placements": "kronii, miko, wtm, anya, sana, iroha, polka, matsuri, mori, noel, mio",
+            "disconnects": [ "mio" ]
+        },
+        {
+            "map_name": "",
+            "placements": "wtm, mio, miko, matsuri, sana, noel, iroha, anya, polka, kronii, mori"
+        }
+    ],
+    "Prelim Block D": [
+        {
+            "map_name": "",
+            "placements": "reine, marine, luna, fbk, subaru, bae, lui, kiara, ina, nene"
+        },
+        {
+            "map_name": "",
+            "placements": "subaru, luna, lui, reine, ina, marine, nene, kiara, fbk, bae"
+        },
+        {
+            "map_name": "",
+            "placements": "subaru, lui, marine, fbk, reine, luna, kiara, bae, nene, ina"
+        },
+        {
+            "map_name": "",
+            "placements": "lui, ina, reine, marine, kiara, bae, nene, subaru, fbk, luna"
+        },
+        {
+            "map_name": "",
+            "placements": "marine, subaru, ina, luna, fbk, reine, nene, bae, lui, kiara"
+        },
+        {
+            "map_name": "",
+            "placements": "marine, reine, subaru, lui, nene, ina, luna, bae, fbk, kiara"
+        }
+    ],
+    "Zako Cup": [
+        {
+            "map_name": "",
+            "placements": "mio, flare, bae, la+, kiara, mumei, nene, mori, koyo, lamy, noel, choco"
+        },
+        {
+            "map_name": "",
+            "placements": "mio, mori, flare, nene, kiara, koyo, lamy, la+, bae, noel, choco, mumei"
+        },
+        {
+            "map_name": "",
+            "placements": "mio, nene, kiara, lamy, bae, la+, noel, mumei, flare, mori, koyo, choco"
+        },
+        {
+            "map_name": "",
+            "placements": "bae, lamy, mio, nene, koyo, mumei, flare, mori, noel, kiara, la+, choco"
+        },
+        {
+            "map_name": "",
+            "placements": "kiara, koyo, mio, mori, lamy, mumei, bae, nene, la+, flare, noel, choco"
+        },
+        {
+            "map_name": "",
+            "placements": "bae, koyo, mio, la+, lamy, kiara, mori, nene, flare, choco, noel, mumei"
+        }
+    ],
+    "Winners Cup": [
+        {
+            "map_name": "",
+            "placements": "okayu, gura, marine, miko, skmt, knt, towa, sui, kronii, subaru, reine, wtm"
+        },
+        {
+            "map_name": "",
+            "placements": "sui, okayu, subaru, towa, reine, miko, gura, wtm, marine, knt, skmt, kronii"
+        },
+        {
+            "map_name": "",
+            "placements": "sui, marine, okayu, reine, gura, miko, towa, wtm, kronii, subaru, knt, skmt"
+        },
+        {
+            "map_name": "",
+            "placements": "wtm, kronii, sui, towa, okayu, subaru, miko, knt, skmt, reine, marine, gura"
+        },
+        {
+            "map_name": "",
+            "placements": "okayu, marine, sui, miko, reine, gura, knt, wtm, skmt, towa, subaru, kronii"
+        },
+        {
+            "map_name": "",
+            "placements": "marine, subaru, gura, okayu, wtm, knt, towa, sui, skmt, miko, kronii, reine"
+        }
+    ]
+}

@@ -166,6 +166,9 @@ async function load_single_result(path, title, date) {
                     scores: res.player_ids.map(p => get_placement_score(t.placement_ids.indexOf(p) + 1, num_ppl)),
                 };
                 sc.scores_sum = sc.scores.map((s, i) => s + scores_last[i]);
+                (tmp1["disconnects"] ?? []).forEach(dc => {
+                    sc.scores_sum[res.player_ids.indexOf(find_closest_player(dc))] = 0;
+                });
                 scores_last = sc.scores_sum;
                 return sc;
             });
@@ -217,12 +220,18 @@ export async function load() {
         }
     });
 
-    races = await Promise.all(window["Papa"].parse(await fetch_resource("database/races/_race_list.csv", "text"), { header: true, dynamicTyping: true }).data
-        .map(async lst => ({
+    let races_tmp = window["Papa"].parse(await fetch_resource("database/races/_race_list.csv", "text"), { header: true, dynamicTyping: true }).data
+        .map(lst => ({
             name: lst.name,
             date: new Date(lst.date),
-            groups: await load_single_result(lst.file_name, lst.name, lst.date)
-        })));
+            date_o: lst.date,
+            file_name: lst.file_name,
+        }));
+    races_tmp.sort((a, b) => a.date - b.date);
+    races = await Promise.all(races_tmp.map(async lst => ({
+        groups: await load_single_result(lst.file_name, lst.name, lst.date_o),
+        ...lst
+    })));
 
     players_raced = players.filter(p => p.racing_since > 0);
 }
