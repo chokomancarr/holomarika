@@ -140,15 +140,15 @@
 
 .std_pts {
     float: left;
-    margin-left: -2vh;
-    width: 10vh;
+    margin-left: -5vh;
+    width: 15vh;
     height: 4vh;
-    background-color: var(--tm_accent);
     color: var(--tm_fc_content);
     padding-left: 2vh;
-    transform: skewX(-40deg);
+    background: linear-gradient(-50deg, transparent 20%, var(--tm_accent) 21%, var(--tm_accent) 79%, transparent 80%);
 }
 
 .std_pts > div {
-    transform: skewX(40deg);
+    width: 10vh;
+    text-align: right;
 }

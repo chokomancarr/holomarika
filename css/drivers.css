@@ -5,6 +5,11 @@
     margin-top: 2vh;
     margin-left: 5vh;
     padding: 3vh 5vh;
+}
+
+#player_list_scroll {
+    width: 100%;
+    height: 71vh;
     overflow-y: auto;
 }
 
@@ -16,11 +21,16 @@
     font-size: 2.5vh;
     line-height: 4vh;
     position: absolute;
-    top: calc(4.2vh * var(--sort) + 4.2vh);
+    top: calc(4.2vh * var(--sort));
     left: 0;
     transition: top 0.2s ease-out;
     width: 100%;
     cursor: pointer;
+}
+
+.pll_item_header {
+    position: static;
+    height: 5vh;
 }
 
 .pll_cell, .pll_cell_hd {
@@ -42,10 +52,6 @@
 
 .active > .pll_cell {
     border-bottom: var(--tm_accent) 0.4vh solid;
-}
-
-.pll_item_header {
-    top: 0;
 }
 
 .pll_cell_hd {

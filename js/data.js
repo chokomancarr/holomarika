@@ -113,29 +113,32 @@ export function full_name_of(pl) {
  * @param {string} nm
  * @returns {number} index of player
  */
+let _name_lookup_dict = {};
 export function find_closest_player(nm, nothrow = false) {
-    let nm2 = nm.trim().toLowerCase();
+    return _name_lookup_dict[nm] ?? (_name_lookup_dict[nm] = (function() {
+        let nm2 = nm.trim().toLowerCase();
 
-    { //some common nicknames
-        if (nm2 === "haachama") nm2 = "haato";
-        else if (nm2 === "laplus" || nm2 === "lap" || nm2 === "la") nm2 = "la+";
-        else if (nm2 === "wamy") nm2 = "lamy";
-        else if (nm2 === "god") nm2 = "matsuri";
-        else if (nm2 === "foob") nm2 = "fubuki";
-    }
-
-    //look for exact match first
-    let res = players.findIndex(p => p.name_lookups.some(l => l === nm2));
-    if (res > -1) return res;
-
-    //look for starting names
-    res = players.findIndex(p => p.name_lookups.some(l => l.startsWith(nm2)));
-    if (res > -1) return res;
-
-    if (res === -1 && !nothrow) {
-        alert(`database error: could not find player named "${nm}"!`);
-    }
-    return res;
+        { //some common nicknames
+            if (nm2 === "haachama") nm2 = "haato";
+            else if (nm2 === "laplus" || nm2 === "lap" || nm2 === "la") nm2 = "la+";
+            else if (nm2 === "wamy") nm2 = "lamy";
+            else if (nm2 === "god") nm2 = "matsuri";
+            else if (nm2 === "foob") nm2 = "fubuki";
+        }
+    
+        //look for exact match first
+        let res = players.findIndex(p => p.name_lookups.some(l => l === nm2));
+        if (res > -1) return res;
+    
+        //look for starting names
+        res = players.findIndex(p => p.name_lookups.some(l => l.startsWith(nm2)));
+        if (res > -1) return res;
+    
+        if (res === -1 && !nothrow) {
+            alert(`database error: could not find player named "${nm}"!`);
+        }
+        return res;
+    })());
 }
 
 async function load_single_result(path, title, date) {

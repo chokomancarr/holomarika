@@ -27,12 +27,13 @@ let graph = {
         });
         let cols = res.player_ids.map(i => data.players.find(d => d.player_id == i).color);
 
-        document.getElementById("svg_scores").innerHTML = scores.map((s, p) => `
-<polyline vector-effect="non-scaling-stroke" points="0,0 ${s.map((c,i) => `${i*15+7.5},${c*0.6666}`).join(" ")}" stroke="${cols[p]}" stroke-width="2" fill="none" />
-${
-    s.map((c,i) => `<circle cx="${i*15+7.5}" cy="${c * 0.6666}" r="1" fill="${cols[p]}" />`).join("")
-}
-        `).join("");
+        util.set_inner("svg_scores", scores.map((s, p) => `
+<g id="svg_score_grp_${p}" class="svg_score_grp">
+    <polyline vector-effect="non-scaling-stroke" points="0,0 ${s.map((c,i) => `${i*15+7.5},${c*0.6666}`).join(" ")}" stroke="${cols[p]}" stroke-width="2" fill="none" />
+    ${
+        s.map((c,i) => `<circle cx="${i*15+7.5}" cy="${c * 0.6666}" r="1" fill="${cols[p]}" />`).join("")
+    }
+</g>`).join(""));
     },
 }
 
@@ -44,7 +45,7 @@ function gen_group_list_html() {
 
 function gen_standings_html() {
     util.set_inner("standings", Array(12).fill(0).map((_, i) => `
-<div class="std_item" style="--rank:${i}">
+<div class="std_item" data-i="${i}" style="--rank:${i}">
     <div class="std_num">${i+1}.</div>
     <div class="std_col"></div>
     <div class="std_name">PLAYER NAME</div>
@@ -58,6 +59,17 @@ function gen_standings_html() {
     standing_elems_col = Array.from(document.getElementsByClassName("std_col"));
     standing_elems_name = Array.from(document.getElementsByClassName("std_name"));
     standing_elems_pts = Array.from(document.getElementsByClassName("std_pts_no"));
+
+    standing_elems.forEach(el => {
+        el.addEventListener("mouseover", e => {
+            document.getElementById("svg_scores").classList.add("dofade");
+            document.getElementById(`svg_score_grp_${e.target.dataset.i}`).classList.add("nofade");
+        });
+        el.addEventListener("mouseleave", e => {
+            document.getElementById("svg_scores").classList.remove("dofade");
+            document.getElementById(`svg_score_grp_${e.target.dataset.i}`).classList.remove("nofade");
+        });
+    });
 }
 
 function select_group(i) {

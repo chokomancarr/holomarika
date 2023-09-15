@@ -74,6 +74,10 @@
     top: calc(5vh * var(--rank));
     left: 0;
     transition: top 0.2s ease-out;
+    cursor: pointer;
+}
+.std_item > div {
+    pointer-events: none;
 }
 
 .std_num {
@@ -92,7 +96,7 @@
 
 .std_name {
     float: left;
-    width: 30vh;
+    width: 32vh;
     height: 4vh;
     background-color: var(--tm_bg_standing);
     color: var(--tm_fc_content_dark);
@@ -101,17 +105,22 @@
 
 .std_pts {
     float: left;
-    margin-left: -2vh;
-    width: 10vh;
+    margin-left: -7vh;
+    width: 15vh;
     height: 4vh;
-    background-color: var(--tm_accent);
     color: var(--tm_fc_content);
     padding-left: 2vh;
-    transform: skewX(-40deg);
+    background: linear-gradient(-50deg, transparent 20%, var(--tm_accent) 21%, var(--tm_accent) 79%, transparent 80%);
+    transition: margin-left 0.1s linear;
+}
+
+.std_item:hover > .std_pts {
+    margin-left: -5vh;
 }
 
 .std_pts > div {
-    transform: skewX(40deg);
+    width: 10vh;
+    text-align: right;
 }
 
 #scoregraph {
@@ -127,4 +136,17 @@
 
 .svg_tx {
     transform: translate(calc(-7.5px + 15px * var(--x)), 1px)
+}
+
+.svg_score_grp {
+    filter: opacity(100%);
+    transition: filter 0.1s linear;
+}
+
+.dofade .svg_score_grp {
+    filter: opacity(30%);
+}
+
+.dofade .svg_score_grp.nofade {
+    filter: opacity(100%);
 }
