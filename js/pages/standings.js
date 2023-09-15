@@ -29,9 +29,9 @@ let graph = {
 
         util.set_inner("svg_scores", scores.map((s, p) => `
 <g id="svg_score_grp_${p}" class="svg_score_grp">
-    <polyline vector-effect="non-scaling-stroke" points="0,0 ${s.map((c,i) => `${i*15+7.5},${c*0.6666}`).join(" ")}" stroke="${cols[p]}" stroke-width="2" fill="none" />
+    <polyline vector-effect="non-scaling-stroke" points="0,0 ${s.map((c,i) => `${i*15+7.5},${c*0.6}`).join(" ")}" stroke="${cols[p]}" stroke-width="2" fill="none" />
     ${
-        s.map((c,i) => `<circle cx="${i*15+7.5}" cy="${c * 0.6666}" r="1" fill="${cols[p]}" />`).join("")
+        s.map((c,i) => `<circle cx="${i*15+7.5}" cy="${c * 0.6}" r="1" fill="${cols[p]}" />`).join("")
     }
 </g>`).join(""));
     },

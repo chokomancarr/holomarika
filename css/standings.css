@@ -127,11 +127,16 @@
     position: absolute;
     right: 0;
     top: 0;
+    width: 100%;
+    pointer-events: none;
 }
 
 #scoregraph_svg {
     width: 100vh;
-    height: 70vh;
+    max-width: 50%;
+    max-height: 70vh;
+    float: right;
+    margin-top: 0;
 }
 
 .svg_tx {
@@ -149,4 +154,35 @@
 
 .dofade .svg_score_grp.nofade {
     filter: opacity(100%);
+}
+
+@media (max-width:133vh) {
+    #std_tourney_sel {
+        margin-left: 2vh;
+    }
+    #scoregraph {
+        position: static;
+    }
+    #scoregraph_svg {
+        float: left;
+        width: 80%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .content_frame {
+        width: calc(100vw - 10vh);
+        padding: 3vh 3vh;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width:70vh) {
+    #played {
+        transform: scale(90%);
+        transform-origin: top left;
+        width: 120%;
+    }
+    .horizontal_list > li.glist_item {
+        float: none;
+    }
 }

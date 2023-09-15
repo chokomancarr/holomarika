@@ -61,7 +61,7 @@
 }
 
 
-#live_stream_main {
+.live_stream_frame:first-child {
     position: absolute;
     width: 100vh;
     height: 56.25vh;
@@ -69,6 +69,16 @@
     bottom: 20vh;
     border-radius: 2vh;
 }
+
+.live_stream_frame:nth-child(1n+2) {
+    position: absolute;
+    width: 26.66vh;
+    height: 15vh;
+    right: calc(50vw - 70vh + var(--stream_order) * 30vh);
+    bottom: 3vh;
+    border-radius: 2vh;
+}
+
 
 #live_game_title {
     position: absolute;

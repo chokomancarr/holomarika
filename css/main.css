@@ -11,7 +11,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: fill;
+    object-fit: cover;
     filter: opacity(0%);
     transition: filter 0.5s linear;
     pointer-events: none;
@@ -38,7 +38,20 @@ body {
         font-size: 3vh;
         line-height: 6vh;
         color: var(--tm_fc_title);
-        margin: 0 1vw;
+        margin: 0 1vh;
+        white-space: nowrap;
+    }
+
+    #title_options_bt {
+        position: absolute;
+        right: 1vh;
+        top: 1vh;
+        width: 4vh;
+    }
+
+    #title_options_bt line {
+        stroke: white;
+        stroke-width: 15;
     }
 
 /* ---- categories ---- */
@@ -173,3 +186,43 @@ body {
     .hidescrollbar::-webkit-scrollbar {
         display: none;
     }
+
+
+
+@media (min-width: 70vh) {
+    #title_options_bt {
+        display: none;
+    }
+}
+
+@media (max-width: 133vh) {
+    #top_page {
+        margin: 9vh 0;
+        position: relative;
+        z-index: 1000;
+    }
+}
+
+@media (max-width: 70vh) {
+    #title {
+        display: none;
+    }
+    #top_page {
+        margin: 6vh 0;
+        position: relative;
+        z-index: 1000;
+        display: none;
+    }
+    #top_page.show {
+        display: block;
+    }
+    #page_list {
+        width: 100%;
+        padding: 1vh 2vh;
+        background-color: var(--tm_accent);
+    }
+    .horizontal_list > li.pagelist_item {
+        float: none;
+        width: 50vw;
+    }
+}

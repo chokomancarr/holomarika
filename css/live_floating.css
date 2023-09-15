@@ -1,9 +1,9 @@
-#live_stream_main {
+.live_stream_frame {
     position: absolute;
     width: 30vh;
     height: 16.875vh;
     right: 2vh;
-    bottom: 2vh;
+    bottom: calc(2vh + 18vh * var(--stream_order));
     border-radius: 1vh;
 
     transition: right 0.1s linear, bottom 0.1s linear, width 0.1s linear, height 0.1s linear;

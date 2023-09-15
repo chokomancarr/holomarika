@@ -56,7 +56,7 @@ function select_player(i) {
     nm1.classList.toggle("main", pl.first_name_in_front);
     nm2.classList.toggle("main", !pl.first_name_in_front);
 
-    util.set_inner("pll_team", pl.branch);
+    util.set_inner("pll_team", `${pl.branch} - ${pl.group}`);
 
     /** @type {HTMLElement[]} */
     // @ts-ignore

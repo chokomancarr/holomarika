@@ -47,3 +47,15 @@ export function set_inner(id, content, add = false) {
         el.innerHTML = content;
     }
 }
+
+/**
+ * @param {string} cls
+ * @param {(arg0: HTMLElement, arg1: number) => void } fn
+ */
+export function foreach_class(cls, fn) {
+    let i = 0;
+    for (let c of document.getElementsByClassName(cls)) {
+        fn(c, i);
+        i += 1;
+    }
+}

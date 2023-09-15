@@ -13,22 +13,35 @@ const STREAM_REQ_TY = Object.freeze({
     STATIC: 0,
     HOLODEX: 1,
 });
-let stream_req_type = STREAM_REQ_TY.STATIC;
+let stream_req_type = +util.cookie_get("stream_req_type", STREAM_REQ_TY.STATIC);
 let hdx_api_key = util.url_param_get("holodex_key", util.cookie_get("holodex_key", null));
 
-let active_livestream = null;
+const MAX_N_LIVESTREAM = 4;
+let active_livestream = [];
 let livestream_div = document.getElementById("live_streams");
 
 function add_livestream(url) {
-    util.set_inner("live_streams", `
-<iframe id="live_stream_main" src="https://www.youtube.com/embed/${url}?autoplay=0&showinfo=0"
+    function _string2node(s) {
+        var div = document.createElement('div');
+        div.innerHTML = s;
+        return div.querySelector("iframe");
+    }
+    document.getElementById("live_streams").prepend(_string2node(`
+<iframe id="live_stream_frame_${url}" data-url="${url}" class="live_stream_frame" src="https://www.youtube.com/embed/${url}?autoplay=0&showinfo=0"
     scrolling="no" frameborder="0" marginheight="0px" marginwidth="0px" height="100vh" width="56.25vh" allowfullscreen>
-</iframe>`);
-    active_livestream = url;
+</iframe>`));
+    active_livestream.push(url);
+    update_livestream_css();
 }
-function kill_livestream() {
-    document.getElementById("live_streams").innerHTML = "";
-    active_livestream = null;
+function kill_livestream(url) {
+    document.getElementById("live_stream_frame_" + url).remove();
+    active_livestream.splice(active_livestream.indexOf(url), 1);
+    update_livestream_css();
+}
+function update_livestream_css() {
+    util.foreach_class("live_stream_frame", (e, i) => {
+        e.style.setProperty("--stream_order", i + "");
+    });
 }
 
 async function hdx_fetch(request, headers, params = {}) {
@@ -44,31 +57,47 @@ async function hdx_fetch(request, headers, params = {}) {
     return await res.json();
 }
 
-async function reload_streams() {    
+async function reload_streams(force) {
     ui.hide("stream_none");
     ui.hide("stream_list");
 
-    stream_list = [];
-    switch (stream_req_type) {
-        case STREAM_REQ_TY.STATIC: {
-            break;
-        }
-        case STREAM_REQ_TY.HOLODEX: {
-            stream_list = (await hdx_fetch("live", {}, {
-                status: "live",
-                type: "stream",
-                topic: "Mario Kart",
-                org: "Hololive",
-            })).map(v => ({
-                name: v.channel.english_name,
-                data: v
-            }));
-            break;
+    if (force || stream_list === null) {
+        stream_list = [];
+        switch (stream_req_type) {
+            case STREAM_REQ_TY.STATIC: {
+                stream_list = [
+                    {
+                        name: "Sakura Miko",
+                        url: "uk6g-F43Z7A",
+                    },
+                    {
+                        name: "Kazama Iroha",
+                        url: "y2b9R5mIDmA",
+                    },
+                    {
+                        name: "Kobo Kanaeru",
+                        url: "y5Rd9ebaqUk"
+                    }
+                ];
+                break;
+            }
+            case STREAM_REQ_TY.HOLODEX: {
+                stream_list = (await hdx_fetch("live", {}, {
+                    status: "live",
+                    type: "stream",
+                    topic: "Mario Kart",
+                    org: "Hololive",
+                })).map(v => ({
+                    name: v.channel.english_name,
+                    data: v
+                }));
+                break;
+            }
         }
     }
     
     if (stream_list.length > 0) {
-        util.set_inner("stream_list", stream_list.map(s => `<div>${s.name}</div>`).join(""));
+        util.set_inner("stream_list", stream_list.map(s => `<div id="stream_list_item_${s.url}" class="stream_list_item" data-youtube="${s.url}">${s.name}</div>`).join(""));
         ui.show("stream_list");
     }
     else {
@@ -87,9 +116,10 @@ function load_standings_html() {
     </div>
 </div>
     `).join(""));
+}
 
+function load_stream_list() {
     util.set_inner("stream_req_type", "Static");
-
 
     document.getElementById("reqtype_sel").addEventListener("change", e => {
         ui.show("showif_holodex", +e.target.value === 1);
@@ -97,12 +127,17 @@ function load_standings_html() {
         document.getElementById("stream_req_type").innerText = e.target.options[+e.target.value].text;
     });
     {
+        let elm = document.getElementById("reqtype_sel");
+        elm.value = stream_req_type + "";
+        elm.dispatchEvent(new Event("change"));
+        elm.addEventListener("change", e => {
+            util.cookie_set("stream_req_type", e.target.value);
+        });
+    }
+    {
         let elm = document.getElementById("holodex_key_input");
         if (hdx_api_key !== null) {
             elm.value = hdx_api_key;
-            let e2 = document.getElementById("reqtype_sel");
-            e2.value = "1";
-            e2.dispatchEvent(new Event("change"));
         }
         elm.addEventListener("change", e => {
             util.cookie_set("holodex_key", e.target.value);
@@ -114,10 +149,6 @@ function load_standings_html() {
     ui.reg_click("stream_req_text", _ => {
         ui.show("floating_window");
     });
-
-    if (stream_list === null) {
-        reload_streams();
-    }
 }
 
 function onload_live(load) {
@@ -127,25 +158,31 @@ function onload_live(load) {
         
         load_standings_html();
 
+        load_stream_list();
+
+        reload_streams();
+
         {
             let main_url = "KDyJmdtclAk";
             let div = document.getElementById("stream_list_item_main");
             div.dataset.youtube = main_url;
-            if (active_livestream === main_url) {
-                div.classList.add("live");
-            }
         }
 
         for (let it of document.getElementsByClassName("stream_list_item")) {
+            if (active_livestream.indexOf(it.dataset.youtube) > -1) {
+                it.classList.add("live");
+            }
             it.addEventListener("click", e => {
                 let url = e.target.dataset.youtube;
-                if (active_livestream === url) {
-                    kill_livestream();
+                if (active_livestream.indexOf(url) > -1) {
+                    kill_livestream(url);
                     e.target.classList.remove("live");
                 }
                 else {
-                    if (active_livestream !== null) {
-                        document.getElementById("stream_list_item_" + active_livestream).classList.remove("live");
+                    if (active_livestream.length === MAX_N_LIVESTREAM) {
+                        let kill_url = document.querySelector(".live_stream_frame").dataset.url;
+                        kill_livestream(kill_url);
+                        document.getElementById("stream_list_item_" + kill_url).classList.remove("live");
                     }
                     add_livestream(url);
                     e.target.classList.add("live");
@@ -154,7 +191,7 @@ function onload_live(load) {
         }
     }
     else {
-        if (active_livestream === null) {
+        if (active_livestream.length === 0) {
             ui.hide("live_streams");
         }
         else {

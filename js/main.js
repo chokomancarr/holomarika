@@ -17,6 +17,7 @@ let last_page = null;
  * @param {string} page
  */
 async function load_page(page) {
+    if (last_page === page) return;
 
     let container = document.getElementById("content_container");
     container.innerHTML = "";
@@ -59,4 +60,8 @@ async function load_bg_movie() {
     ui.reg_multipick_cls("pagelist_item", (/** @type {any} */ i, /** @type {{ dataset: { page: any; }; }} */ e) => {
         load_page(e.dataset.page);
     }).pick(0);
+
+    ui.reg_click("title_options_bt", _ => {
+        document.getElementById("top_page").classList.toggle("show");
+    });
 })();
